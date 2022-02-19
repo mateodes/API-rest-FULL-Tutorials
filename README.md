@@ -1,2 +1,5 @@
-# Spring Boot JPA MySQL - Building Rest CRUD API example
-"# API-rest-FULL-Tutorials" 
+![deleteByTitle](deleteByTitle.jpg)
+
+![updateByTitle](updateByTitle.jpg)
+
+![getPrecioDelCurso](getPrecioDelCurso.jpg)
