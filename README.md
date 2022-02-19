@@ -1,5 +1,5 @@
-![deleteByTitle](deleteByTitle.jpg)
+![deleteByTitle](img/deleteByTitle.jpg)
 
-![updateByTitle](updateByTitle.jpg)
+![updateByTitle](img/updateByTitle.jpg)
 
-![getPrecioDelCurso](getPrecioDelCurso.jpg)
+![getPrecioDelCurso](img/getPrecioDelCurso.jpg)
