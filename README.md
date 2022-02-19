@@ -1,5 +1,5 @@
-![deleteByTitle](img/deleteByTitle.jpg)
+![deleteByTitle](https://github.com/mateodes/API-rest-FULL-Tutorials/blob/main/pruebas%20postman/deleteByTitle.jpg)
 
-![updateByTitle](img/updateByTitle.jpg)
+![updateByTitle](https://github.com/mateodes/API-rest-FULL-Tutorials/blob/main/pruebas%20postman/updateByTitle.jpg)
 
-![getPrecioDelCurso](img/getPrecioDelCurso.jpg)
+![getPrecioDelCurso](https://github.com/mateodes/API-rest-FULL-Tutorials/blob/main/pruebas%20postman/getPrecioDelCurso.jpg)
