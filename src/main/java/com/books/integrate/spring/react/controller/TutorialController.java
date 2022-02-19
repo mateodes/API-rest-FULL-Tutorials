@@ -108,6 +108,17 @@ public class TutorialController {
 
 	}
 
+	@DeleteMapping(value = "/tutorials", params = "title")
+	public ResponseEntity<String> deleteTutorialByTitle(@RequestParam(value = "title") String title){
+		List<Tutorial> tutorialsToDelete = tutorialRepository.findByTitleContaining(title);
+		try{
+			tutorialsToDelete.forEach((tutorial) -> tutorialRepository.deleteById(tutorial.getId()));
+			return new ResponseEntity<>("Se han eliminado los tutoriales con el titulo: "+title , HttpStatus.NO_CONTENT);
+		}catch(Exception e){
+			return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
+		}
+	}
+
 	@GetMapping("/tutorials/published")
 	public ResponseEntity<List<Tutorial>> findByPublished() {
 		try {
