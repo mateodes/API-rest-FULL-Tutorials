@@ -59,14 +59,19 @@ public class TutorialController {
 		}
 	}
 
-	@GetMapping("/tutorials/{price}")
-	public ResponseEntity<Tutorial> getTutorialByPrice(@PathVariable("price") long price) {
-		Optional<Tutorial> tutorialData = tutorialRepository.findByPrice(price);
+	@GetMapping("/tutorials/getPrecioDelCurso")
+	public ResponseEntity<String> getPrecioDelCurso(){
+		List<Tutorial> tutorials = new ArrayList<Tutorial>();
+		tutorialRepository.findAll().forEach(tutorials::add);
+		float preciocurso=0;
 
-		if (tutorialData.isPresent()) {
-			return new ResponseEntity<>(tutorialData.get(), HttpStatus.OK);
+		if (tutorials.isEmpty()) {
+			return new ResponseEntity<>("No se ha encontrado nungun tutorial en el curso",HttpStatus.NO_CONTENT);
 		} else {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			for(Tutorial _tutorial : tutorials) {
+				preciocurso = preciocurso + _tutorial.getPrice();
+			}
+			return new ResponseEntity<>("El precio total del curso es: "+preciocurso, HttpStatus.OK);
 		}
 	}
 
