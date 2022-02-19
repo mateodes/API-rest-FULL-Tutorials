@@ -59,6 +59,17 @@ public class TutorialController {
 		}
 	}
 
+	@GetMapping("/tutorials/{price}")
+	public ResponseEntity<Tutorial> getTutorialByPrice(@PathVariable("price") long price) {
+		Optional<Tutorial> tutorialData = tutorialRepository.findByPrice(price);
+
+		if (tutorialData.isPresent()) {
+			return new ResponseEntity<>(tutorialData.get(), HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
+
 
 	@PostMapping("/tutorials")
 	public ResponseEntity<Tutorial> createTutorial(@RequestBody Tutorial tutorial) {
@@ -85,6 +96,26 @@ public class TutorialController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
+
+	@PutMapping("/tutorials/updateByTitle/{title}")
+	public ResponseEntity<Tutorial> updateTutorialByTitle(@PathVariable("title") String title, @RequestBody Tutorial tutorial) {
+		List<Tutorial> tutorialsByTitle = tutorialRepository.findByTitleContaining(title);
+
+		if (!tutorialsByTitle.isEmpty()) {
+			for(Tutorial _tutorial : tutorialsByTitle){
+			_tutorial.setTitle(tutorial.getTitle());
+			_tutorial.setDescription(tutorial.getDescription());
+			_tutorial.setPublished(tutorial.isPublished());
+			_tutorial.setPrice(tutorial.getPrice());
+			tutorialRepository.save(_tutorial);
+			};
+			return new ResponseEntity<>(HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
+
+
 
 //HttpStatus
 	@DeleteMapping("/tutorials/{id}")
